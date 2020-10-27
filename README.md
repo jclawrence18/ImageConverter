@@ -8,4 +8,5 @@ Place the executable in the folder of the images you wish to convert and run as 
 HEIC to JPEG
 
 **Coming Soon**  
-Extension Conversion Select List
+Extension Selector
+More supported extension types!
