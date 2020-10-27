@@ -1,0 +1,6 @@
+/Users/jclawrence/Projects/ImageConverter/ImageConverter/bin/Debug/ImageConverter.exe
+/Users/jclawrence/Projects/ImageConverter/ImageConverter/bin/Debug/ImageConverter.pdb
+/Users/jclawrence/Projects/ImageConverter/ImageConverter/obj/Debug/ImageConverter.csprojAssemblyReference.cache
+/Users/jclawrence/Projects/ImageConverter/ImageConverter/obj/Debug/ImageConverter.csproj.CoreCompileInputs.cache
+/Users/jclawrence/Projects/ImageConverter/ImageConverter/obj/Debug/ImageConverter.exe
+/Users/jclawrence/Projects/ImageConverter/ImageConverter/obj/Debug/ImageConverter.pdb
