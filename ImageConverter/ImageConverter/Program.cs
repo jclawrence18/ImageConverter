@@ -21,6 +21,8 @@ namespace ImageConverter
             // Gets the directory the exe is being run from
             var filePath = AppDomain.CurrentDomain.BaseDirectory;
 
+            Console.WriteLine("Running from {0}", filePath);
+            
             Console.WriteLine("Select an image type to convert:"
                 + Environment.NewLine);
 
@@ -42,10 +44,36 @@ namespace ImageConverter
 
             int convertToNum = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Running Image Converter...");
-            ConvertImageTypes(numToConvert, convertToNum, fileTypes, filePath);
+            #region metadata method - will complete later
+            //Console.WriteLine("Do you want to include image metadata?" + Environment.NewLine +
+            //    "WARNING: You will not be able to recover the metadata after conversion");
+            //Console.Write("[Y/N]: ");
 
-            Console.WriteLine("Done!");
+            //string userResponse = Console.ReadLine();
+            //bool transferMetadata = true;
+
+            //if(userResponse.ToLower().Contains("f"))
+            //{
+            //    transferMetadata = false;
+            //}
+            #endregion
+
+
+
+            Console.WriteLine("Running Image Converter...");
+
+            try
+            {
+                ConvertImageTypes(numToConvert, convertToNum, fileTypes, filePath);//, transferMetadata);
+            }
+
+            catch(Exception ex)
+            {
+                Console.WriteLine("Exception: {0}", ex.InnerException);
+            }
+
+            Console.WriteLine("Done!" + Environment.NewLine + "Press any key to close...");
+            Console.ReadKey();
         }
 
         static void PrintFileTypes(string[] fileTypes)
@@ -60,11 +88,14 @@ namespace ImageConverter
 
         static void ConvertImageTypes(int numToConvert,
             int convertToNum,
-            string[] fileTypes, string filePath)
+            string[] fileTypes, string filePath)//,
+            //bool transferMetadata)
         {
             // Get file type at index (convert num - 1)
             var typeToConvert = fileTypes[numToConvert - 1];
             var convertToType = fileTypes[convertToNum - 1];
+
+            Console.WriteLine("Converting from {0} to {1}", typeToConvert, convertToType);
 
             string[] files = Directory.GetFiles(filePath, typeToConvert, SearchOption.AllDirectories);
 
