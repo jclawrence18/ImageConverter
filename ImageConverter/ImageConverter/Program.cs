@@ -97,9 +97,21 @@ namespace ImageConverter
 
             Console.WriteLine("Converting from {0} to {1}", typeToConvert, convertToType);
 
-            string[] files = Directory.GetFiles(filePath, typeToConvert, SearchOption.AllDirectories);
 
-            foreach (var file in files)
+            // Check for upper and lowercase file extensions
+            string[] filesUpper = Directory.GetFiles(filePath, typeToConvert, SearchOption.AllDirectories);
+            string[] filesLower = Directory.GetFiles(filePath, typeToConvert.ToLower(), SearchOption.AllDirectories);
+
+            // Debug lines
+            Console.WriteLine(filesUpper.Length);
+            Console.WriteLine(filesLower.Length);
+
+            // Concat arrays
+            var allFiles = new string[filesUpper.Length + filesLower.Length];
+            filesUpper.CopyTo(allFiles, 0);
+            filesLower.CopyTo(allFiles, filesUpper.Length);
+
+            foreach (var file in allFiles)
             {
                 var convertedFile = Path.ChangeExtension(file, convertToType);
                 System.IO.File.Move(file, convertedFile);
